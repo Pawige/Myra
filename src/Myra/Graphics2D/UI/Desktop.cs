@@ -447,6 +447,7 @@ namespace Myra.Graphics2D.UI
 		}
 
 		public Action<Keys> KeyDownHandler;
+		public Vector2 InputScaling;
 
 		public IBrush Background { get; set; }
 
@@ -977,7 +978,7 @@ namespace Myra.Graphics2D.UI
 
 			if (touchState.Count > 0)
 			{
-				var pos = touchState[0].Position;
+				var pos = touchState[0].Position * InputScaling;
 				TouchPosition = new Point((int)pos.X, (int)pos.Y);
 			}
 
@@ -1005,7 +1006,8 @@ namespace Myra.Graphics2D.UI
 			}
 
 			var mouseInfo = MouseInfoGetter();
-			var mousePosition = mouseInfo.Position;
+			Vector2 scaledInput = mouseInfo.Position.ToVector2() * InputScaling;
+			Point mousePosition = scaledInput.ToPoint();
 
 			MousePosition = mousePosition;
 
