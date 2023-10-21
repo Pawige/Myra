@@ -447,7 +447,7 @@ namespace Myra.Graphics2D.UI
 		}
 
 		public Action<Keys> KeyDownHandler;
-		public Vector2 InputScaling;
+		public Vector2 InputScaling = Vector2.One;
 
 		public IBrush Background { get; set; }
 
